@@ -52,21 +52,20 @@ public class SkyFarmDiscord
 
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
-    public static void playerJoin(final EntityJoinWorldEvent event) {
+    public void playerJoin(final EntityJoinWorldEvent event) {
         Minecraft minecraft = Minecraft.getInstance();
         PlayerEntity player = minecraft.player;
         if (player == null) return;
         Entity entity = event.getEntity();
         if (!entity.getUUID().equals(player.getUUID())) return;
         Discord.updateRichPresence(
-                minecraft.getConnection() == null ? "Singleplayer" : "Multiplayer",
+                minecraft.hasSingleplayerServer() ? "Singleplayer" : "Multiplayer",
                 ModList.get().getMods().size() + " Mods Loaded",
                 new Discord.DiscordImage("skyfarm", "Farming in the Sky"),
-                minecraft.getConnection() == null ? new Discord.DiscordImage("singleplayer", "For themselves") : new Discord.DiscordImage("multiplayer", "But with friends")
+                minecraft.hasSingleplayerServer() ? new Discord.DiscordImage("singleplayer", "For themselves") : new Discord.DiscordImage("multiplayer", "But with friends")
         );
     }
 
-    @SubscribeEvent
     private static void clientSetup(final FMLClientSetupEvent event) {
         Discord.startup();
         Discord.updateRichPresence("Starting Sky Farm...", "Mods are loading...", new Discord.DiscordImage("loading", "Loading..."), null);
