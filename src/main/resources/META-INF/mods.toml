@@ -1,25 +1,27 @@
 modLoader="javafml"
 loaderVersion="[36,)"
-license="All rights reserved"
+license="GNU GPLv3"
 
 [[mods]]
-modId="skyfarm_discord"
-version="1.0.0"
+modId="skyfarm_client"
+version="1.0.1"
+updateJSONURL="https://raw.githubusercontent.com/North-West-Wind/SkyFarmClient/main/update.json"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/sky-farm-client"
 displayName="Sky Farm Discord"
-credits="Thanks for this example mod goes to Java"
-authors="Love, Cheese and small house plants"
+credits="Thanks to Clear Skies and Botania"
+authors="NorthWestWind"
 description='''
-Discord Rich Presence for Sky Farm.
+Client-side enhancements for Sky Farm.
 '''
 
-[[dependencies.skyfarm_discord]]
+[[dependencies.skyfarm_client]]
     modId="forge"
     mandatory=true
     versionRange="[36,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.skyfarm_discord]]
+[[dependencies.skyfarm_client]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.16.5,1.17)"

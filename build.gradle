@@ -1,23 +1,29 @@
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
+        maven {
+            name "Forge"
+            url = "https://files.minecraftforge.net/maven"
+        }
+        maven { url = "https://repo.spongepowered.org/maven" }
         jcenter()
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
+        classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
         classpath "com.github.jengelman.gradle.plugins:shadow:4.0.4"
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0.0'
-group = 'ml.northwestwind.skyfarm.discord' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'skyfarm_discord'
+version = '1.0.1'
+group = 'ml.northwestwind.skyfarm.client' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'skyfarm_client'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
 
@@ -40,11 +46,12 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
+            arg "-mixin.config=skyfarm_client.mixins.json"
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                skyfarm_discord {
+                skyfarm_client {
                     source sourceSets.main
                 }
             }
@@ -56,7 +63,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                skyfarm_discord {
+                skyfarm_client {
                     source sourceSets.main
                 }
             }
@@ -66,10 +73,10 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'skyfarm_client', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                skyfarm_discord {
+                skyfarm_client {
                     source sourceSets.main
                 }
             }
@@ -82,10 +89,12 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
     jcenter()
     maven { url 'https://jitpack.io' }
+    maven { url = "https://repo.spongepowered.org/maven" }
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.1.0'
+    annotationProcessor "org.spongepowered:mixin:0.8.2:processor"
 
     shade "com.google.guava:guava:30.1-jre"
     shade "com.google.code.gson:gson:2.8.0"
@@ -107,12 +116,12 @@ jar {
     manifest {
         classifier = "1.16.5"
         attributes([
-            "Specification-Title": "skyfarm_discord",
-            "Specification-Vendor": "skyfarm_discord",
+            "Specification-Title": "skyfarm_client",
+            "Specification-Vendor": "skyfarm_client",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"skyfarm_discord",
+            "Implementation-Vendor" :"skyfarm_client",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
@@ -131,4 +140,8 @@ publishing {
             url "file:///${project.projectDir}/mcmodsrepo"
         }
     }
+}
+
+mixin {
+    add sourceSets.main, "skyfarm_client.refmap.json"
 }

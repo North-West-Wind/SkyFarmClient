@@ -1,5 +1,6 @@
-package ml.northwestwind.skyfarm.discord;
+package ml.northwestwind.skyfarm.client.discord;
 
+import ml.northwestwind.skyfarm.client.SkyFarmDiscord;
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;

@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "ml.northwestwind.skyfarm.client.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "skyfarm.refmap.json",
+  "mixins": [
+    "FogRendererMixin",
+    "WorldRendererMixin"
+  ],
+  "minVersion": "0.8"
+}
