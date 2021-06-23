@@ -1,6 +1,8 @@
 Client-side enhancements for Sky Farm.
 This mod should meant to be used in Sky Farm only, but you can use it in other modpack if you want to.
 
+[Here](https://www.curseforge.com/minecraft/mc-mods/sky-farm-client)'s its CurseForge page.
+
 # Features
 ### Discord
 - When launching Forge, your Discord will show a rich presence about mods loading.
