@@ -21,7 +21,7 @@ apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0.2'
+version = '1.0.3'
 group = 'ml.northwestwind.skyfarm.client' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'skyfarm_client'
 

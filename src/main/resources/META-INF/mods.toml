@@ -4,7 +4,7 @@ license="GNU GPLv3"
 
 [[mods]]
 modId="skyfarm_client"
-version="1.0.2"
+version="1.0.3"
 updateJSONURL="https://raw.githubusercontent.com/North-West-Wind/SkyFarmClient/main/update.json"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/sky-farm-client"
 displayName="Sky Farm Client"

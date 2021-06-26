@@ -21,6 +21,8 @@ public class ConfigCommand {
                 .then(Commands.argument("value", BoolArgumentType.bool()).executes(ConfigCommand::disableHorizon)));
         dispatcher.register(Commands.literal("fog")
                 .then(Commands.argument("value", BoolArgumentType.bool()).executes(ConfigCommand::disableFog)));
+        dispatcher.register(Commands.literal("clear_skies")
+                .then(Commands.argument("value", BoolArgumentType.bool()).executes(ConfigCommand::enableClearSkies)));
     }
 
     private static int enableSkybox(CommandContext<CommandSource> context) {
@@ -58,6 +60,19 @@ public class ConfigCommand {
                 new StringTextComponent("")
                         .append(new TranslationTextComponent("config.skyfarm.fog." + value).setStyle(Style.EMPTY.applyFormat(value ? TextFormatting.GREEN : TextFormatting.RED)))
                         .append(new TranslationTextComponent("config.skyfarm.fog")),
+                Util.NIL_UUID);
+        return 1;
+    }
+
+    private static int enableClearSkies(CommandContext<CommandSource> context) {
+        Entity entity = context.getSource().getEntity();
+        if (entity == null) return 0;
+        boolean value = BoolArgumentType.getBool(context, "value");
+        SkyFarmConfig.setClearSkies(value);
+        entity.sendMessage(
+                new StringTextComponent("")
+                        .append(new TranslationTextComponent("config.skyfarm.clear_skies." + value).setStyle(Style.EMPTY.applyFormat(value ? TextFormatting.GREEN : TextFormatting.RED)))
+                        .append(new TranslationTextComponent("config.skyfarm.clear_skies")),
                 Util.NIL_UUID);
         return 1;
     }
