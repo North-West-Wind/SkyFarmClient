@@ -19,6 +19,8 @@ public class ConfigCommand {
                 .then(Commands.argument("value", BoolArgumentType.bool()).executes(ConfigCommand::enableSkybox)));
         dispatcher.register(Commands.literal("horizon")
                 .then(Commands.argument("value", BoolArgumentType.bool()).executes(ConfigCommand::disableHorizon)));
+        dispatcher.register(Commands.literal("fog")
+                .then(Commands.argument("value", BoolArgumentType.bool()).executes(ConfigCommand::disableFog)));
     }
 
     private static int enableSkybox(CommandContext<CommandSource> context) {
@@ -38,11 +40,24 @@ public class ConfigCommand {
         Entity entity = context.getSource().getEntity();
         if (entity == null) return 0;
         boolean value = BoolArgumentType.getBool(context, "value");
-        SkyFarmConfig.setGogSkybox(value);
+        SkyFarmConfig.setNoHorizon(value);
         entity.sendMessage(
                 new StringTextComponent("")
                         .append(new TranslationTextComponent("config.skyfarm.horizon." + value).setStyle(Style.EMPTY.applyFormat(value ? TextFormatting.GREEN : TextFormatting.RED)))
                         .append(new TranslationTextComponent("config.skyfarm.horizon")),
+                Util.NIL_UUID);
+        return 1;
+    }
+
+    private static int disableFog(CommandContext<CommandSource> context) {
+        Entity entity = context.getSource().getEntity();
+        if (entity == null) return 0;
+        boolean value = BoolArgumentType.getBool(context, "value");
+        SkyFarmConfig.setNoFog(value);
+        entity.sendMessage(
+                new StringTextComponent("")
+                        .append(new TranslationTextComponent("config.skyfarm.fog." + value).setStyle(Style.EMPTY.applyFormat(value ? TextFormatting.GREEN : TextFormatting.RED)))
+                        .append(new TranslationTextComponent("config.skyfarm.fog")),
                 Util.NIL_UUID);
         return 1;
     }

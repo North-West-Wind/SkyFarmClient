@@ -1,6 +1,6 @@
 package ml.northwestwind.skyfarm.client.events;
 
-import ml.northwestwind.skyfarm.client.SkyFarmDiscord;
+import ml.northwestwind.skyfarm.client.SkyFarmClient;
 import ml.northwestwind.skyfarm.client.config.SkyFarmConfig;
 import ml.northwestwind.skyfarm.client.discord.Discord;
 import net.minecraftforge.api.distmarker.Dist;
@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.loading.FMLPaths;
 
-@Mod.EventBusSubscriber(modid = SkyFarmDiscord.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = SkyFarmClient.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class SetupEvents {
     @SubscribeEvent
     public static void setup(final FMLClientSetupEvent event) {

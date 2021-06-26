@@ -1,0 +1,11 @@
+{
+  "config.skyfarm.skybox": " Garden of Glass skybox",
+  "config.skyfarm.skybox.true": "Enabled",
+  "config.skyfarm.skybox.false": "Disabled",
+  "config.skyfarm.horizon": " Sky horizon",
+  "config.skyfarm.horizon.true": "Disabled",
+  "config.skyfarm.horizon.false": "Enabled",
+  "config.skyfarm.fog": " Fog",
+  "config.skyfarm.fog.true": "Disabled",
+  "config.skyfarm.fog.false": "Enabled"
+}

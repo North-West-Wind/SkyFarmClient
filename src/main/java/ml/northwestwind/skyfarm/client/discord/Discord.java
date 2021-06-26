@@ -1,10 +1,7 @@
 package ml.northwestwind.skyfarm.client.discord;
 
-import ml.northwestwind.skyfarm.client.SkyFarmDiscord;
-import net.arikia.dev.drpc.DiscordEventHandlers;
-import net.arikia.dev.drpc.DiscordRPC;
-import net.arikia.dev.drpc.DiscordRichPresence;
-import net.arikia.dev.drpc.DiscordUser;
+import ml.northwestwind.skyfarm.client.SkyFarmClient;
+import net.arikia.dev.drpc.*;
 import net.arikia.dev.drpc.callbacks.ReadyCallback;
 
 import javax.annotation.Nullable;
@@ -20,7 +17,7 @@ public class Discord {
     private static class ReadyHandler implements ReadyCallback {
         @Override
         public void apply(DiscordUser user) {
-            SkyFarmDiscord.LOGGER.info(String.format("Connected to %s#%s. Discord ready.", user.username, user.discriminator));
+            SkyFarmClient.LOGGER.info(String.format("Connected to %s#%s. Discord ready.", user.username, user.discriminator));
         }
     }
 
