@@ -1,14 +1,19 @@
 {
-  "config.skyfarm.skybox": " Garden of Glass Skybox",
-  "config.skyfarm.skybox.true": "Enabled",
-  "config.skyfarm.skybox.false": "Disabled",
-  "config.skyfarm.horizon": " Horizon",
-  "config.skyfarm.horizon.true": "Disabled",
-  "config.skyfarm.horizon.false": "Enabled",
-  "config.skyfarm.fog": " Fog",
-  "config.skyfarm.fog.true": "Disabled",
-  "config.skyfarm.fog.false": "Enabled",
-  "config.skyfarm.clear_skies": " Clear Skies",
-  "config.skyfarm.clear_skies.true": "Enabled",
-  "config.skyfarm.clear_skies.false": "Disabled"
+  "screen.skyfarm.settings": "Sky Farm Client Settings",
+
+  "option.skyfarm.skybox": "GOG Skybox: %s",
+  "option.skyfarm.no_horizon": "No Horizon: %s",
+  "option.skyfarm.no_fog": "No fog: %s",
+  "option.skyfarm.clear_skies": "Clear Skies: %s",
+
+  "option.skyfarm.true": "ON",
+  "option.skyfarm.false": "OFF",
+
+  "tooltip.skyfarm.skybox": "Uses the Garden of Glass Skybox",
+  "tooltip.skyfarm.no_horizon": "Removes the dark horizon below y=64",
+  "tooltip.skyfarm.no_fog": "Allows seeing distant objects clearly",
+  "tooltip.skyfarm.clear_skies": "Makes the fog same color as the sky",
+
+  "key.skyfarm.settings": "Open Settings",
+  "category.skyfarm.client": "Sky Farm Client"
 }

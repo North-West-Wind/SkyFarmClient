@@ -3,6 +3,7 @@ package ml.northwestwind.skyfarm.client.mixin;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
+import ml.northwestwind.skyfarm.client.SkyFarmClient;
 import ml.northwestwind.skyfarm.client.config.SkyFarmConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
@@ -88,7 +89,15 @@ public class WorldRendererMixin {
         return ModList.get().isLoaded("botania") && SkyFarmConfig.GOG_SKYBOX.get() ? 60f : oldValue;
     }
 
-    @Redirect(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/world/ClientWorld$ClientWorldInfo;getHorizonHeight()D"), method = "renderSky", require = 1, allow = 1)
+    @Redirect(
+            at = @At(value = "INVOKE",target = "Lnet/minecraft/client/world/ClientWorld$ClientWorldInfo;getHorizonHeight()D"),
+            method = "renderSky",
+            slice = @Slice(
+                    from = @At(ordinal = 3, value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;disableTexture()V"),
+                    to = @At(ordinal = 1, value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;enableTexture()V")
+            ),
+            require = 0
+    )
     private double horizonDistance(ClientWorld.ClientWorldInfo clientWorldInfo) {
         return SkyFarmConfig.NO_HORIZON.get() ? -64 : clientWorldInfo.getHorizonHeight();
     }

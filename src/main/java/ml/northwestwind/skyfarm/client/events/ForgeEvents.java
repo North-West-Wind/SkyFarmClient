@@ -2,7 +2,8 @@ package ml.northwestwind.skyfarm.client.events;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import ml.northwestwind.skyfarm.client.SkyFarmClient;
-import ml.northwestwind.skyfarm.client.command.ConfigCommand;
+import ml.northwestwind.skyfarm.client.config.KeyBindings;
+import ml.northwestwind.skyfarm.client.config.SettingsScreen;
 import ml.northwestwind.skyfarm.client.config.SkyFarmConfig;
 import ml.northwestwind.skyfarm.client.discord.Discord;
 import net.minecraft.client.Minecraft;
@@ -16,7 +17,7 @@ import net.minecraft.potion.Effects;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.GuiOpenEvent;
-import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -49,11 +50,6 @@ public class ForgeEvents {
         );
     }
 
-    @SubscribeEvent
-    public static void registerCommand(final RegisterCommandsEvent event) {
-        ConfigCommand.registerCommand(event.getDispatcher());
-    }
-
     @SubscribeEvent(priority = EventPriority.LOWEST, receiveCanceled = true)
     public static void removeFog(EntityViewRenderEvent.FogDensity event) {
         if (SkyFarmConfig.NO_FOG.get()) {
@@ -66,6 +62,13 @@ public class ForgeEvents {
                 event.setCanceled(true);
             }
         }
+    }
 
+    @SubscribeEvent
+    public static void keyInput(final InputEvent.KeyInputEvent event) {
+        if (KeyBindings.openMenu.consumeClick()) {
+            if (Minecraft.getInstance().screen instanceof SettingsScreen) Minecraft.getInstance().setScreen(null);
+            else Minecraft.getInstance().setScreen(new SettingsScreen());
+        }
     }
 }

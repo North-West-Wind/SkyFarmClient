@@ -1,6 +1,7 @@
 package ml.northwestwind.skyfarm.client.events;
 
 import ml.northwestwind.skyfarm.client.SkyFarmClient;
+import ml.northwestwind.skyfarm.client.config.KeyBindings;
 import ml.northwestwind.skyfarm.client.config.SkyFarmConfig;
 import ml.northwestwind.skyfarm.client.discord.Discord;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,6 +15,7 @@ public class SetupEvents {
     @SubscribeEvent
     public static void setup(final FMLClientSetupEvent event) {
         SkyFarmConfig.loadClientConfig(FMLPaths.CONFIGDIR.get().resolve("skyfarm-client.toml").toString());
+        KeyBindings.registerKeybindings();
         Discord.startup();
         Discord.updateRichPresence("Starting Sky Farm...", "Mods are loading...", new Discord.DiscordImage("loading", "Loading..."), null);
     }

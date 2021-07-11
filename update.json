@@ -4,10 +4,12 @@
     "1.0.0": "Initial release",
     "1.0.1": "Ported client stuff from Sky Farm to here",
     "1.0.2": "Fixed No Horizon",
-    "1.0.3": "Added config for Clear Skies"
+    "1.0.3": "Added config for Clear Skies",
+    "1.0.4": "Commands usable on server",
+    "1.0.5": "Removed commands. Use GUI to config instead"
   },
   "promos": {
-    "1.16.5-latest": "1.0.3",
-    "1.16.5-recommended": "1.0.3"
+    "1.16.5-latest": "1.0.5",
+    "1.16.5-recommended": "1.0.5"
   }
 }
