@@ -6,7 +6,8 @@
     "1.0.2": "Fixed No Horizon",
     "1.0.3": "Added config for Clear Skies",
     "1.0.4": "Commands usable on server",
-    "1.0.5": "Removed commands. Use GUI to config instead"
+    "1.0.5": "Removed commands. Use GUI to config instead",
+    "1.0.6": "Fixed No Horizon and GOG Skybox"
   },
   "promos": {
     "1.16.5-latest": "1.0.5",
